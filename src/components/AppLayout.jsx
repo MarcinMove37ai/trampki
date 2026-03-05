@@ -225,7 +225,7 @@ function Sheet({ title, items, onClose, onSelect }) {
           }}>✕</button>
         </div>
         {items.map((item, i) => (
-          <button key={i} onClick={() => { onSelect(item.label); onClose(); }} style={{
+          <button key={i} onClick={() => { onClose(); onSelect(item.label); }} style={{
             width: "100%", background: "none", border: "none",
             borderTop: `1px solid ${T.border}`, padding: "13px 20px",
             display: "flex", alignItems: "center", gap: 14,
@@ -476,7 +476,7 @@ export default function AppLayout() {
 
   const handleSheetSelect = (label) => {
     if (label === "Cel miesięczny") navigate("cel-miesiac");
-    if (label === "Cel roczny")    navigate("cele-roczne");
+    if (label === "Cele roczne")    navigate("cele-roczne");
     if (label === "Budżet Domowy")  navigate("budzet-domowy");
     if (label === "Budżet Szkolny") navigate("budzet-szkolny");
     // Pozycje z "Więcej" — otwórz modal z ideą ekranu
