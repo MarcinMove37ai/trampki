@@ -1,0 +1,30 @@
+# ─── .dockerignore ───────────────────────────
+# Wyklucz wszystko co nie jest potrzebne w obrazie
+
+node_modules
+.next
+.git
+.gitignore
+
+# Logi
+*.log
+npm-debug.log*
+
+# Env lokalne (używaj docker run -e lub secrets)
+.env
+.env.local
+.env.development
+.env.production
+
+# IDE
+.vscode
+.idea
+*.swp
+
+# System
+.DS_Store
+Thumbs.db
+
+# Readme / docs
+README.md
+CHANGELOG.md
