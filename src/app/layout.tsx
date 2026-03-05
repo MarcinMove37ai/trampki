@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   description: "Aplikacja edukacji finansowej dla młodzieży",
   icons: {
     icon: "/wa.webp",
+    apple: "/wa.webp",
   },
 };
 
