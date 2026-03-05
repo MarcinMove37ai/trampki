@@ -56,7 +56,7 @@ const MEDAL = ["🥇", "🥈", "🥉"];
 
 // ─── QUIZ MODAL ───────────────────────────────
 function QuizModal({ onClose }) {
-  const [step,      setStep]      = useState("intro"); // intro | q1 | q2 | q3 | result
+  const [step,      setStep]      = useState("q1"); // od razu pierwsze pytanie
   const [answers,   setAnswers]   = useState({});      // { qIndex: answerIndex }
   const [selected,  setSelected]  = useState(null);
   const [revealed,  setRevealed]  = useState(false);

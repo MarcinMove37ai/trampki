@@ -47,6 +47,23 @@ const SCREENS = {
   "budzet-szkolny": (props) => <BudzetSzkolny {...props} />,
 };
 
+// ─── SESSION HELPERS (10 min) ─────────────────
+const SESSION_KEY = "trampki_unlocked";
+const SESSION_TTL = 10 * 60 * 1000;
+
+const checkSession = () => {
+  try {
+    const raw = sessionStorage.getItem(SESSION_KEY);
+    if (!raw) return false;
+    const { ts } = JSON.parse(raw);
+    return Date.now() - ts < SESSION_TTL;
+  } catch { return false; }
+};
+
+const saveSession = () => {
+  try { sessionStorage.setItem(SESSION_KEY, JSON.stringify({ ts: Date.now() })); } catch {}
+};
+
 // ─── PASSWORD GATE ────────────────────────────
 function PasswordGate({ onUnlock }) {
   const [val,   setVal]   = useState("");
@@ -55,6 +72,7 @@ function PasswordGate({ onUnlock }) {
 
   const attempt = () => {
     if (val.toLowerCase() === "liki") {
+      saveSession();
       onUnlock();
     } else {
       setError(true); setShake(true); setVal("");
@@ -465,7 +483,7 @@ function MoreIdeaModal({ label, onClose }) {
   );
 }
 export default function AppLayout() {
-  const [unlocked,  setUnlocked]  = useState(false);
+  const [unlocked,  setUnlocked]  = useState(() => checkSession());
   const [tab,       setTab]       = useState(0);
   const [sheet,     setSheet]     = useState(null);
   const [modal,     setModal]     = useState(null);
