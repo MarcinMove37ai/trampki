@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "Trampki na Giełdzie",
   description: "Aplikacja edukacji finansowej dla młodzieży",
   icons: {
-    icon: "/logo.webp",
+    icon: "/wa.webp",
   },
 };
 
